@@ -16,3 +16,11 @@ tasks:
     cmds:
       - "docker login -u {{ .DOCKERHUB_LOGIN }} -p {{ .DOCKERHUB_PASSWORD }}"
       - "IMAGE_NAMESPACE={{ .IMAGE_NAMESPACE }} VERSION={{ .VERSION }} docker buildx bake push"
+
+  run:
+    label: 'Run container'
+    cmd: "docker run -p 8080:3128 {{ .IMAGE_NAMESPACE }}:{{ .VERSION }}"
+
+  run_background:
+    label: 'Run container in background'
+    cmd: "docker run -d -p 8080:3128 {{ .IMAGE_NAMESPACE }}:{{ .VERSION }}"

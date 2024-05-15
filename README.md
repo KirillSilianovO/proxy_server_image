@@ -1,9 +1,11 @@
-# DOCKER IMAGE BUILD TEMPLATE
+# Simple proxy server
 
 ## Description
-Template for building multiplatform Docker images
+Image with simple proxy server based on Squid. It's used to proxy requests to other services.
 
 ## Usage
+
+## Build Image
 
 ### Requirements
 1. Docker
@@ -24,3 +26,5 @@ task build_load
 ```shell
 task build_push
 ```
+
+## Usage

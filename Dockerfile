@@ -1,4 +1,10 @@
-FROM --platform=${BUILDPLATFORM} alpine:3.17
+FROM --platform=${BUILDPLATFORM} ubuntu:22.04
 
-RUN /bin/sh -c set -eux; \
-    echo ${BUILDPLATFORM}; \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    	squid && \
+    apt-get clean
+
+EXPOSE 3128/tcp
+
+ENTRYPOINT ["/usr/sbin/squid", "-N"]
